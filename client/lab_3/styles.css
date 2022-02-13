@@ -8,6 +8,7 @@
   color: #fff;
   background-color: #5995da; /* Blue */
   padding: 20px 0;
+  display: flex;
 }
 
 .menu {
@@ -15,7 +16,9 @@
   width: 900px;
 }
 
-.section_1{
-    background-color: brown;
+.topper{
+    background-color:  rgba(0,139, 139,0.4);
+    display: flex;
 }
+
 
