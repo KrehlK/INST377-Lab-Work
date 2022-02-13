@@ -80,9 +80,9 @@
   margin-bottom: 20px;
 }
 
-footer {
+.footer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .footer-item {
@@ -91,18 +91,18 @@ footer {
   height: 200px;
   flex: 1;
 }
-.footer-three {
+
+.footer-two {
   flex: 2;
 }
 
-.footer-one,
-.footer-three {
+.footer-one, .footer-three {
   background-color: #5995da;
   flex: initial;
   width: 300px;
 }
 
-@media only screen and (min-width: 401px) and (max-width: 960px) {
+@media only screen and (min-width: 400px) and (max-width: 400px) {
   .sign-up,
   .feature-1,
   .feature-2,
@@ -113,8 +113,7 @@ footer {
 
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
-    body {
-      background-color: #F09A9D; /* Red */
-    }
+  body {
+    background-color: #f09a9d; /* Red */
   }
-  
+}
