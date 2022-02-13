@@ -5,7 +5,7 @@
 }
 
 .menu-container {
-  color: #fff; 
+  color: #fff;
   background-color: #5995da; /* Blue */
   padding: 20px 0;
   display: flex;
@@ -35,8 +35,6 @@
 .links .database {
   justify-content: flex-start;
 }
-
-
 
 .header-container {
   color: #5995da;
@@ -88,7 +86,7 @@
 
 footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .footer-item {
@@ -97,18 +95,13 @@ footer {
   height: 200px;
   flex: 1;
 }
-
 .footer-three {
   flex: 2;
 }
 
 .footer-one,
 .footer-three {
-  background-color: #5995DA;
+  background-color: #5995da;
   flex: initial;
   width: 300px;
 }
-
-.signup {
-    margin-left: auto;
-  }
