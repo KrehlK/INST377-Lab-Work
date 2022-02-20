@@ -1,4 +1,4 @@
-@m * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -147,12 +147,14 @@
     order: -1;
   }
 
-  .carousel{
-    overfloe: hidden;
-    max-width: 300px;
-    position: relative; 
-    
+ 
 
+}
+
+.carousel{
+  overflow: hidden;
+  max-width: 300px;
+  position: relative; 
 }
 
 .carousel .carousel_item,
@@ -199,4 +201,4 @@
     margin-right:20px;
 }
 
-}
+
