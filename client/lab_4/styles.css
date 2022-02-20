@@ -1,6 +1,4 @@
-
-@m
-* {
+@m * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,9 +12,9 @@
   justify-content: center; /* Add this */
 }
 
-.database{
-    display: flex;
-    padding-left: 50px;
+.database {
+  display: flex;
+  padding-left: 50px;
 }
 
 .menu {
@@ -110,7 +108,6 @@
   width: 300px;
 }
 
-
 @media only screen and (min-width: 400px) and (max-width: 400px) {
   .sign-up,
   .feature-1,
@@ -149,4 +146,57 @@
   .last-item {
     order: -1;
   }
+
+  .carousel{
+    overfloe: hidden;
+    max-width: 300px;
+    position: relative; 
+    
+
+}
+
+.carousel .carousel_item,
+.carousel .carousel_item--hidden{
+    display: none;
+}
+
+.carousel .carousel_item img{
+    width: 100%;
+    max-width: 300px;
+}
+
+.carousel .carousel_item--visible{
+    display: block;
+}
+
+.carousel .carousel_actions{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel .carousel_actions button{
+    border-radius: 50px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+
+
+}
+
+
+
+.carousel .carousel_actions button#carousel_button--prev{
+    margin-left: 20px;
+}
+
+.carousel .carousel_actions button#carousel_button--next{
+    margin-right:20px;
+}
+
 }
