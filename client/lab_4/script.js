@@ -2,16 +2,6 @@ let slidePosition = 0;
 const slides = document.querySelectorAll('.carousel_item');
 const totalSlides = slides.length;
 
-// document.
-//   querySelector('carousel__button--next')
-//   .addEventListener("click", function() {
-//     moveToNextSlide();
-//   });
-// document.
-//   querySelector('carousel__button--prev')
-//   .addEventListener("click", function() {
-//     moveToPrevSlide();
-//   });
 
 let nextSlide = document.querySelector('#carousel_button--next');
 let prevSlide = document.querySelector('#carousel_button--prev');
