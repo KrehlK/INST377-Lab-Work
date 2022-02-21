@@ -1,25 +1,31 @@
 let slidePosition = 0;
-const slides = document.getElementsByClassName('carousel__item');
+const slides = document.querySelectorAll('.carousel_item');
 const totalSlides = slides.length;
 
-document.
-  getElementById('carousel__button--next')
-  .addEventListener("click", function() {
-    moveToNextSlide();
-  });
-document.
-  getElementById('carousel__button--prev')
-  .addEventListener("click", function() {
-    moveToPrevSlide();
-  });
+// document.
+//   querySelector('carousel__button--next')
+//   .addEventListener("click", function() {
+//     moveToNextSlide();
+//   });
+// document.
+//   querySelector('carousel__button--prev')
+//   .addEventListener("click", function() {
+//     moveToPrevSlide();
+//   });
+
+let nextSlide = document.querySelector('#carousel_button--next');
+let prevSlide = document.querySelector('#carousel_button--prev');
+
+nextSlide.addEventListener('click', () => { moveToNextSlide(); });
+prevSlide.addEventListener('click', () => { moveToPrevSlide(); });
 
 function updateSlidePosition() {
   for (let slide of slides) {
-    slide.classList.remove('carousel__item--visible');
+    slide.classList.remove('carousel_item--visible');
     slide.classList.add('carousel__item--hidden');
   }
 
-  slides[slidePosition].classList.add('carousel__item--visible');
+  slides[slidePosition].classList.add('carousel_item--visible');
 }
 
 function moveToNextSlide() {
