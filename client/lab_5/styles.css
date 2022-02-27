@@ -78,7 +78,11 @@ header {
 .form-row button:active {
   background-color: lightgreen;
 }
-
+.main_form{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /* Page Layout */
 .columns {
   display: flex;
