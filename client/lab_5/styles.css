@@ -36,11 +36,14 @@ header {
   background-color: white;
   border-radius: 15px;
   padding: 75px;
+  margin: 50px;
 }
 
 .empty_space {
   display: flex;
   justify-content: center;
+  padding: 20px;
+  
 }
 
 .cool {
