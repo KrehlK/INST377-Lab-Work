@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  background-color: darkslategray;
+}
+
+header {
+  flex: 0px;
+  padding: 40px;
+  border-radius: 15px;
+}
+
+.header_container {
+  background-color: coral;
+  margin: 50px;
+}
+
+.form_container {
+  padding: 50px;
+  border-radius: 15px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.empty_space_container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 75px;
+  margin: 50px;
+}
+
+.empty_space {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  
+}
+
+.cool {
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+.feedback_field {
+  display: flex;
+  flex-direction: column;
+}
+
+.choice_style {
+  border: none;
+}
+
+.form-row button {
+  font-size: 16px;
+  font-weight: bold;
+
+  color:white;
+  background-color: green;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 10px 40px;
+  cursor: pointer;
+}
+
+.form-row button:hover {
+  background-color: darkgreen;
+}
+
+.form-row button:active {
+  background-color: lightgreen;
+}
+.main_form{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Page Layout */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  display: flex;
+}
+.container {
+  max-width: 960px;
+  margin-top: 25px;
+}
