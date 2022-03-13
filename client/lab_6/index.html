@@ -1,59 +1,40 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset='utf-8'>
-  <title>Krehl's lab 6</title>
-  <link rel='stylesheet' href='styles.css' />
-  <script src='script.js'></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="vieport" content="width=device-width, initial-scale=1.0">
+  <title> Krehl K's lab 6</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
-
-<header class="header_container">
-  Krehl Kasayan's Lab 5
-</header>
-
-
 <body>
-  <form method='get' class="main_form">
-    <div class="columns wrapper cool">
-      <div class="form_container">
+  <div class="wrapper">
+    <div class="container">
+      <div class="header">Krehl K lab 6</div>
+      <div class="columns">
+        <div class="page_item">
+          <form action ="/api/foodServicesPG" class="main_form">
+              <div class="form_item">
+                <label for="fname">First Name</label>
+                <input type="text" name="fname" id="fname">
+              </div>
 
-        <div>
-          <div class="feedback_field">
-            <label for='name'>Name</label>
-            <input id='name' />
-          </div>
-
-          <div class="feedback_field">
-            <label for="food_preference">Food Preference</label>
-            <input id='food_preference' />
-          </div>
-
-          <div><strong>Veggie or Vegan?</strong></div>
-          <fieldset class='choice_style'>
-            <legend></legend>
-            <input id='choice' name='yes' type='radio' value='yes' />
-            <label for='choice' class='radio_label'>Yes</label>
-            <input id='choice' name='no' type='radio' value='no' />
-            <label for='choice' class='radio_label'>No</label>
-
-          </fieldset>
-          <div class='form-row'>
-            <button type = "submit">Submit</button>
-          </div>
+              <div class="form_item">
+                <label for="pref">Food Preference</label>
+                <input type="text" name="pref" id="fname">
+              </div>
+              <button class = "button submit_button" type="submit">Submit</button>
+          </form>
+        </div>
+        <div class="page_item">
+          <h2>Restaurant List</h2>
+          <ul id="resto-list"></ul>
         </div>
       </div>
-  </form>
-  <div class="empty_space_container">
-    <div class="empty_space">
-      This will be something in 2 weeks
     </div>
   </div>
-  </div>
-
-
-
+  <script src="./script.js"></script>
 </body>
-
 </html>
