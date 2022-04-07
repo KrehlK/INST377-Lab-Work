@@ -31,6 +31,9 @@ function createHtmlList(collection) {
     targetList.innerHTML += injectThisItem;
   });
 }
+function initMap() {
+  return L.map('map').setView([51.505, -0.09], 13);
+}
 
 // As the last step of your lab, hook this up to index.html
 async function mainEvent() { // the async keyword means we can make API requests
@@ -40,6 +43,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   const resto = document.querySelector('#resto_name');
   const zipcode = document.querySelector('#zipcode');
+  const map = initMap();
   submit.style.display = 'none';
 
   // const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
