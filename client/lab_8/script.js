@@ -42,9 +42,11 @@ async function mainEvent() { // the async keyword means we can make API requests
   const zipcode = document.querySelector('#zipcode');
   submit.style.display = 'none';
 
-  const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
-  const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-  //console.log(arrayFromJson);
+  // const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+  // const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+  // //console.log(arrayFromJson);
+
+  const arrayFromJson = {data: []}; //todo remove debug tool
 
   // this statement is to prevent a race condition on data load
   if (arrayFromJson.data.length > 0) {
