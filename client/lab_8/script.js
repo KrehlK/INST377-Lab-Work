@@ -21,7 +21,7 @@ function restoArrayMake(dataArray) {
 function createHtmlList(collection) {
   // console.log('fired HTML creator');
   // console.table(collection);
-  console.log(collection);
+  // console.log(collection);
   const targetList = document.querySelector('.resto-list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
@@ -31,8 +31,13 @@ function createHtmlList(collection) {
     targetList.innerHTML += injectThisItem;
   });
 }
+
+// ToDO: reload restaurants
 function initMap(targetId) {
-  const map = L.map(targetId).setView([51.505, -0.09], 13);
+  // TODO
+  // https://leafletjs.com/SlavaUkraini/ - Leaflet tutorial, unfortunate world
+  const latLong = [38.784, -76.872]; //-- sould be PG county, but is Xinjiang
+  const map = L.map(targetId).setView(latLong, 9);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -44,6 +49,21 @@ function initMap(targetId) {
   return map;
 }
 
+function addMapMarkers(map, collection) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  //add markers
+  collection.forEach((item) => {
+    const point = item.geocoded_column_1?.coordinates;
+    console.log(item.geocoded_column_1?.coordinates);
+    L.marker([point[1], point[0]]).addTo(map);
+  });
+}
+
 // As the last step of your lab, hook this up to index.html
 async function mainEvent() { // the async keyword means we can make API requests
   console.log('script loaded');
@@ -53,25 +73,30 @@ async function mainEvent() { // the async keyword means we can make API requests
   const resto = document.querySelector('#resto_name');
   const zipcode = document.querySelector('#zipcode');
   const map = initMap('map');
+  const retrievalVar = 'restaurants';
   submit.style.display = 'none';
 
-  // const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
-  // const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-  // //console.log(arrayFromJson);
+  //TODO: FIGURE OUT HOW TO  CLEAR DATA
+  if (!localStorage.getItem(retrievalVar) === undefined) {
+    const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+    const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+    console.log(arrayFromJson);
+    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+  }
 
-  const arrayFromJson = {data: []}; //todo remove debug tool
+  const storedDataString = localStorage.getItem(retrievalVar);
+  const storedDataArray = JSON.parse(storedDataString);
+  console.log(storedDataArray);
+  // const arrayFromJson = {data: []}; //todo remove debug tool
 
   // this statement is to prevent a race condition on data load
-  if (arrayFromJson.data.length > 0) {
+  if (storedDataArray.length > 0) {
     submit.style.display = 'block';
-
     let currentArray = [];
     resto.addEventListener('input', async (event) => {
       console.log(event.target.value);
 
-
-
-      const selectResto = arrayFromJson.data.filter((item) => {
+      const selectResto = storedDataString.filter((item) => {
         const lowerName = item.name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
@@ -86,9 +111,10 @@ async function mainEvent() { // the async keyword means we can make API requests
       //console.log('form submission'); // this is substituting for a "breakpoint"
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
-      currentArray = restoArrayMake(arrayFromJson.data);
+      currentArray = restoArrayMake(storedDataArray);
       console.log(currentArray);
       createHtmlList(currentArray);
+      addMapMarkers(map, currentArray);
     });
   }
 }
