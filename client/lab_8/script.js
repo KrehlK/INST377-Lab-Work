@@ -64,6 +64,21 @@ function addMapMarkers(map, collection) {
   });
 }
 
+function refreshList(target, storage) {
+  target.addEventListener('click', async (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    const results = await fetch('/api/foodServicesPG');
+    const arrayFromJson = await results.json();
+    console.log(arrayFromJson);
+    localStorage.setItem(storage, JSON.stringify(arrayFromJson.data));
+    location.reload();
+  });
+}
+
+function inputListener(target){
+
+}
 // As the last step of your lab, hook this up to index.html
 async function mainEvent() { // the async keyword means we can make API requests
   console.log('script loaded');
@@ -72,9 +87,13 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   const resto = document.querySelector('#resto_name');
   const zipcode = document.querySelector('#zipcode');
+  const refresh = document.querySelector('#refresh_list');
+
   const map = initMap('map');
   const retrievalVar = 'restaurants';
   submit.style.display = 'none';
+
+  refreshList(refresh, retrievalVar);
 
   //TODO: FIGURE OUT HOW TO  CLEAR DATA
   if (!localStorage.getItem(retrievalVar) === undefined) {
@@ -90,9 +109,13 @@ async function mainEvent() { // the async keyword means we can make API requests
   // const arrayFromJson = {data: []}; //todo remove debug tool
 
   // this statement is to prevent a race condition on data load
-  if (storedDataArray.length > 0) {
+  if (storedDataArray?.length > 0) {
     submit.style.display = 'block';
     let currentArray = [];
+
+    inputListener(resto);
+
+    
     resto.addEventListener('input', async (event) => {
       console.log(event.target.value);
 
@@ -105,7 +128,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       console.log(selectResto);
       createHtmlList(selectResto);
     });
-    
+
     form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       //console.log('form submission'); // this is substituting for a "breakpoint"
